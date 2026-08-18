@@ -420,8 +420,9 @@ main > section { width: 100%; padding-inline: 0; }
 }
 .project-image img {
   width: 100%;
-  aspect-ratio: 16 / 9;
+  aspect-ratio: 16 / 10;
   object-fit: cover;
+  object-position: center;
   will-change: transform;
   transition: filter .5s ease;
 }
@@ -533,10 +534,8 @@ main > section { width: 100%; padding-inline: 0; }
 }
 .project-research .project-image { margin-inline: 0; }
 .project-research .project-image img {
-  aspect-ratio: 16 / 11;
+  aspect-ratio: 16 / 10;
   object-fit: contain;
-  background: color-mix(in srgb, var(--paper) 55%, #cfc9bd);
-  padding: clamp(1rem, 2.5vw, 2.5rem);
 }
 
 .research-stats { border-top: 1px solid var(--line); }
@@ -581,9 +580,7 @@ main > section { width: 100%; padding-inline: 0; }
   gap: clamp(3rem, 7vw, 7rem);
 }
 .project-arjuna .project-layout .project-image { order: 2; }
-.project-arjuna .project-image img { aspect-ratio: 4 / 3; object-fit: cover; }
 .project-cyber .project-layout .project-image { order: 0; }
-.project-cyber .project-image img { aspect-ratio: 4 / 3; object-fit: cover; }
 
 .project-copy { min-width: 0; }
 .project-copy h4 {
@@ -606,7 +603,6 @@ main > section { width: 100%; padding-inline: 0; }
 .logic-row span:last-child { color: var(--blue); }
 
 .project-compression .project-image { margin-inline: 0; max-width: 64rem; margin-left: auto; }
-.project-compression .project-image img { aspect-ratio: 2.1 / 1; }
 
 /* ── Other work ────────────────────────────────────────────────────── */
 .other-work { padding-block: clamp(5rem, 10vw, 9rem); border-top: 1px solid var(--line); }

@@ -132,7 +132,7 @@ document.querySelector('#app').innerHTML = `
         <div class="project-title"><h3>TRANSFER<br>LEARNING<br>STUDY</h3><p>DEEP LEARNING / COMPUTER VISION / RESEARCH</p></div>
       </div>
       <div class="project-layout reveal">
-        <div class="project-image" data-parallax="0.05">${img('transfer')}</div>
+        <div class="project-image">${img('transfer')}</div>
         <div class="project-details">
           <p class="lede">A comparative study of Standard Fine-Tuning and Adaptive Fine-Tuning on ImageNet-pretrained models using CalTech-101.</p>
           <div class="research-stats">
@@ -389,10 +389,9 @@ const applyParallax = () => {
     const image = el.querySelector('img');
     const r = el.getBoundingClientRect();
     if (!image || r.bottom < 0 || r.top > innerHeight) return;
-    const rate = parseFloat(el.dataset.parallax || '0.08');
-    const offset = (r.top + r.height / 2 - innerHeight / 2) * rate;
-    const clamped = Math.max(-50, Math.min(50, offset));
-    image.style.transform = `translate3d(0, ${clamped}px, 0) scale(1.28)`;
+    const offset = (r.top + r.height / 2 - innerHeight / 2) * 0.055;
+    const clamped = Math.max(-34, Math.min(34, offset));
+    image.style.transform = `translate3d(0, ${clamped}px, 0) scale(1.16)`;
   });
   parallaxTicking = false;
 };
