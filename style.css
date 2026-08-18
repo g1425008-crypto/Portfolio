@@ -423,7 +423,6 @@ main > section { width: 100%; padding-inline: 0; }
   aspect-ratio: 16 / 10;
   object-fit: cover;
   object-position: center;
-  will-change: transform;
   transition: filter .5s ease;
 }
 .project-image:hover img { filter: saturate(1.06) brightness(.99); }
@@ -967,5 +966,4 @@ main > section { width: 100%; padding-inline: 0; }
   .hero h1 .words { transform: none; }
   .reveal, .reveal-stagger > * { opacity: 1; transform: none; filter: none; }
   .project-image::after { opacity: 1; transform: none; }
-  [data-parallax] img { transform: none !important; }
 }

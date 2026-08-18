@@ -15,7 +15,7 @@ const flow = (items) => `<div class="flow">${items.map(x => `<span>${x}</span>`)
 const head = (label, right) => `<div class="section-head reveal"><span>${label}</span><span class="right">${right}</span></div>`;
 const lede = (h, p) => `<div class="lead-grid reveal"><h2 class="display">${h}</h2><p>${p}</p></div>`;
 const projectImage = (key, tag) =>
-  `<div class="project-image" data-parallax="0.08">${tag ? `<span class="image-tag">${tag}</span>` : ''}${img(key)}</div>`;
+  `<div class="project-image">${tag ? `<span class="image-tag">${tag}</span>` : ''}${img(key)}</div>`;
 
 document.querySelector('#app').innerHTML = `
 <div class="progress" aria-hidden="true"></div>
@@ -175,7 +175,7 @@ document.querySelector('#app').innerHTML = `
           <div class="detail-copy">FastAPI · OpenEnv · 14 offline scenario bundles · 3-step episodes: IDENTIFY / TRIAGE / DECIDE · CSV audit logging · zero network calls. The zero-shot Llama-3/Groq baseline became stuck at Medium tier.</div>
           ${link('https://github.com/Pruthvi-workspace/Arjuna-Env')}
         </div>
-        <div class="project-image" data-parallax="0.09">${img('arjuna')}</div>
+        <div class="project-image">${img('arjuna')}</div>
       </div>
     </div>
   </section>
@@ -187,7 +187,7 @@ document.querySelector('#app').innerHTML = `
         <div class="project-title"><h3>CYBERGUARD<br>AI</h3><p>NLP / MULTILINGUAL AI / SOCIAL IMPACT</p></div>
       </div>
       <div class="project-layout reveal">
-        <div class="project-image" data-parallax="0.09"><span class="image-tag">LANGUAGE + ACCESSIBILITY + IMPACT</span>${img('cyber')}</div>
+        <div class="project-image"><span class="image-tag">LANGUAGE + ACCESSIBILITY + IMPACT</span>${img('cyber')}</div>
         <div class="project-copy">
           <h4>MULTILINGUAL AI COMPLAINT INTELLIGENCE</h4>
           <p>A production-oriented AI complaint registration platform supporting voice and text workflows across 22 Indian languages.</p>
@@ -380,25 +380,6 @@ const updateSpy = () => {
   navLinks.forEach(a => a.classList.toggle('active', a.getAttribute('href') === current));
 };
 
-/* ── Image parallax ────────────────────────────────────────────────── */
-const preferReduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
-const parallaxEls = [...document.querySelectorAll('[data-parallax]')];
-let parallaxTicking = false;
-const applyParallax = () => {
-  parallaxEls.forEach(el => {
-    const image = el.querySelector('img');
-    const r = el.getBoundingClientRect();
-    if (!image || r.bottom < 0 || r.top > innerHeight) return;
-    const offset = (r.top + r.height / 2 - innerHeight / 2) * 0.055;
-    const clamped = Math.max(-34, Math.min(34, offset));
-    image.style.transform = `translate3d(0, ${clamped}px, 0) scale(1.16)`;
-  });
-  parallaxTicking = false;
-};
-const requestParallax = () => {
-  if (!parallaxTicking) { requestAnimationFrame(applyParallax); parallaxTicking = true; }
-};
-
 /* ── Magnetic links ────────────────────────────────────────────────── */
 const magneticEls = [...document.querySelectorAll('.arrow-link, .project-link, .scroll-hint')];
 magneticEls.forEach(el => {
@@ -420,12 +401,10 @@ if (title) {
 requestAnimationFrame(() => requestAnimationFrame(() => hero.classList.add('ready')));
 
 /* ── Shared scroll handlers ────────────────────────────────────────── */
-const onScroll = () => { updateProgress(); updateSpy(); if (!preferReduced) requestParallax(); };
+const onScroll = () => { updateProgress(); updateSpy(); };
 window.addEventListener('scroll', onScroll, { passive: true });
-window.addEventListener('resize', requestParallax);
 updateProgress();
 updateSpy();
-if (!preferReduced) applyParallax();
 
 nav.addEventListener('mouseenter', () => nav.classList.toggle('scrolled', window.scrollY > 24));
 window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 24), { passive: true });
