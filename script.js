@@ -10,7 +10,7 @@ const projects = {
 };
 const github = 'https://github.com/Pruthvi-workspace';
 const link = (href, label = 'VIEW ON GITHUB ↗') => `<a class="project-link" href="${href}" target="_blank" rel="noreferrer">${label}</a>`;
-const img = (key, cls = '') => `<img class="${cls}" src="${projects[key].image}" alt="${projects[key].alt}" loading="lazy" decoding="async" />`;
+const img = (key, cls = '') => `<img class="${cls}" src="/${projects[key].image}" alt="${projects[key].alt}" loading="lazy" decoding="async" />`;
 const flow = (items) => `<div class="flow">${items.map(x => `<span>${x}</span>`).join('')}</div>`;
 const head = (label, right) => `<div class="section-head reveal"><span>${label}</span><span class="right">${right}</span></div>`;
 const lede = (h, p) => `<div class="lead-grid reveal"><h2 class="display">${h}</h2><p>${p}</p></div>`;
@@ -43,7 +43,7 @@ document.querySelector('#app').innerHTML = `
       </div>
     </div>
     <figure class="hero-visual reveal">
-      <img src="hero.png" alt="Editorial portrait of Pruthviraj Shinde" fetchpriority="high" decoding="async">
+      <img src="/hero.png" alt="Editorial portrait of Pruthviraj Shinde" fetchpriority="high" decoding="async">
       <figcaption>PRUTHVIRAJ / 2026</figcaption>
     </figure>
     <div class="hero-bottom">
