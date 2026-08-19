@@ -1,12 +1,12 @@
 import './style.css';
 
 const projects = {
-  data: { image: 'data factory.png', alt: 'Data Factory AI training dataset generation pipeline visualization' },
-  rag: { image: 'advanced rag.png', alt: 'Advanced RAG systems architecture visualization' },
-  transfer: { image: 'transfer learning.png', alt: 'Transfer learning comparison visualization' },
-  arjuna: { image: 'arjuna.png', alt: 'ARJUNA reinforcement learning environment visualization' },
-  cyber: { image: 'cybergaurd ai.png', alt: 'CyberGuard AI multilingual complaint intelligence platform' },
-  compression: { image: 'deep model compression.png', alt: 'Deep model compression visualization' },
+  data: { image: 'data factory.png', alt: 'Data Factory AI training dataset generation pipeline visualization', url: 'https://github.com/pruthvirajshunde1111-ctrl/AI-training-database' },
+  rag: { image: 'advanced rag.png', alt: 'Advanced RAG systems architecture visualization', url: 'https://github.com/pruthvirajshunde1111-ctrl/RAG-PROJECTS' },
+  transfer: { image: 'transfer learning.png', alt: 'Transfer learning comparison visualization', url: 'https://github.com/Pruthvi-workspace/Transfer-learning-' },
+  arjuna: { image: 'arjuna.png', alt: 'ARJUNA reinforcement learning environment visualization', url: 'https://github.com/Pruthvi-workspace/Arjuna-Env' },
+  cyber: { image: 'cybergaurd ai.png', alt: 'CyberGuard AI multilingual complaint intelligence platform', url: 'https://github.com/Pruthvi-workspace/CyberGuard-AI' },
+  compression: { image: 'deep model compression.png', alt: 'Deep model compression visualization', url: 'https://github.com/Pruthvi-workspace/Deep-model-Compression' },
 };
 const github = 'https://github.com/Pruthvi-workspace';
 const link = (href, label = 'VIEW ON GITHUB ↗') => `<a class="project-link" href="${href}" target="_blank" rel="noreferrer">${label}</a>`;
@@ -15,12 +15,14 @@ const flow = (items) => `<div class="flow">${items.map(x => `<span>${x}</span>`)
 const head = (label, right) => `<div class="section-head reveal"><span>${label}</span><span class="right">${right}</span></div>`;
 const lede = (h, p) => `<div class="lead-grid reveal"><h2 class="display">${h}</h2><p>${p}</p></div>`;
 const projectImage = (key, tag) =>
-  `<div class="project-image">${tag ? `<span class="image-tag">${tag}</span>` : ''}${img(key)}</div>`;
+  `<a class="project-image" href="${projects[key].url}" target="_blank" rel="noreferrer" aria-label="Open ${projects[key].alt}">${tag ? `<span class="image-tag">${tag}</span>` : ''}${img(key)}</a>`;
+const marqueeLane = (items) =>
+  `<div class="marquee-lane"><div class="marquee">${[...items, ...items].map(x => `<span>${x}</span>`).join('')}</div></div>`;
 
 document.querySelector('#app').innerHTML = `
 <div class="progress" aria-hidden="true"></div>
 <header class="site-nav" id="top">
-  <a class="nav-name" href="#top">PRUTHVIRAJ SHINDE</a>
+  <a class="nav-name" href="#top"><span class="nav-mark">P</span>PRUTHVIRAJ SHINDE</a>
   <nav class="nav-links" aria-label="Primary">
     <a href="#work">WORK</a><a href="#experience">EXPERIENCE</a><a href="#about">ABOUT</a><a href="#research">RESEARCH</a><a href="#contact">CONTACT ↗</a>
   </nav>
@@ -40,6 +42,7 @@ document.querySelector('#app').innerHTML = `
         <div><span class="k">BASED IN</span><strong>BANGALORE / INDIA</strong></div>
         <div><span class="k">EDUCATION</span><strong>CSE — DATA SCIENCE</strong></div>
         <div><span class="k">NOW</span><strong>2023 — 2027</strong></div>
+        <div><span class="k">STATUS</span><strong class="status"><i></i>OPEN TO WORK</strong></div>
       </div>
     </div>
     <figure class="hero-visual reveal">
@@ -132,7 +135,7 @@ document.querySelector('#app').innerHTML = `
         <div class="project-title"><h3>TRANSFER<br>LEARNING<br>STUDY</h3><p>DEEP LEARNING / COMPUTER VISION / RESEARCH</p></div>
       </div>
       <div class="project-layout reveal">
-        <div class="project-image">${img('transfer')}</div>
+        <a class="project-image" href="${projects.transfer.url}" target="_blank" rel="noreferrer" aria-label="Open ${projects.transfer.alt}">${img('transfer')}</a>
         <div class="project-details">
           <p class="lede">A comparative study of Standard Fine-Tuning and Adaptive Fine-Tuning on ImageNet-pretrained models using CalTech-101.</p>
           <div class="research-stats">
@@ -175,7 +178,7 @@ document.querySelector('#app').innerHTML = `
           <div class="detail-copy">FastAPI · OpenEnv · 14 offline scenario bundles · 3-step episodes: IDENTIFY / TRIAGE / DECIDE · CSV audit logging · zero network calls. The zero-shot Llama-3/Groq baseline became stuck at Medium tier.</div>
           ${link('https://github.com/Pruthvi-workspace/Arjuna-Env')}
         </div>
-        <div class="project-image">${img('arjuna')}</div>
+        <a class="project-image" href="${projects.arjuna.url}" target="_blank" rel="noreferrer" aria-label="Open ${projects.arjuna.alt}">${img('arjuna')}</a>
       </div>
     </div>
   </section>
@@ -187,7 +190,7 @@ document.querySelector('#app').innerHTML = `
         <div class="project-title"><h3>CYBERGUARD<br>AI</h3><p>NLP / MULTILINGUAL AI / SOCIAL IMPACT</p></div>
       </div>
       <div class="project-layout reveal">
-        <div class="project-image"><span class="image-tag">LANGUAGE + ACCESSIBILITY + IMPACT</span>${img('cyber')}</div>
+        <a class="project-image" href="${projects.cyber.url}" target="_blank" rel="noreferrer" aria-label="Open ${projects.cyber.alt}"><span class="image-tag">LANGUAGE + ACCESSIBILITY + IMPACT</span>${img('cyber')}</a>
         <div class="project-copy">
           <h4>MULTILINGUAL AI COMPLAINT INTELLIGENCE</h4>
           <p>A production-oriented AI complaint registration platform supporting voice and text workflows across 22 Indian languages.</p>
@@ -342,7 +345,8 @@ document.querySelector('#app').innerHTML = `
   </section>
 
   <div class="marquee-wrap" aria-label="Currently exploring">
-    <div class="marquee"><span>CURRENTLY EXPLORING →</span><span>LLM SYSTEMS</span><span>AGENTIC AI</span><span>RAG</span><span>MULTIMODAL AI</span><span>RESEARCH</span><span>SYSTEM DESIGN</span><span>MODEL OPTIMIZATION</span><span>AI PRODUCTS</span><span>CURRENTLY EXPLORING →</span><span>LLM SYSTEMS</span><span>AGENTIC AI</span><span>RAG</span><span>MULTIMODAL AI</span><span>RESEARCH</span><span>SYSTEM DESIGN</span><span>MODEL OPTIMIZATION</span><span>AI PRODUCTS</span></div>
+    ${marqueeLane(['CURRENTLY EXPLORING →', 'LLM SYSTEMS', 'AGENTIC AI', 'RAG', 'MULTIMODAL AI', 'RESEARCH', 'SYSTEM DESIGN', 'MODEL OPTIMIZATION', 'AI PRODUCTS'])}
+    ${marqueeLane(['NOW BUILDING →', 'RAG SYSTEMS', 'AGENTIC WORKFLOWS', 'EVALUATION', 'PROMPT ENGINEERING', 'EMBEDDINGS', 'STREAMLIT APPS', 'RESEARCH NOTES', 'MLOPS'])}
   </div>
 
   <section class="contact" id="contact">
