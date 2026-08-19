@@ -34,6 +34,7 @@ document.querySelector('#app').innerHTML = `
 
 <main>
   <section class="hero" aria-labelledby="hero-title">
+    <div class="hero-3d" aria-hidden="true"></div>
     <div class="hero-copy reveal">
       <p class="eyebrow">AI ENGINEER · DATA SCIENTIST · BUILDER</p>
       <h1 id="hero-title">I BUILD<br><em class="serif">AI</em></h1>
@@ -152,6 +153,11 @@ document.querySelector('#app').innerHTML = `
   </section>
 
   <section class="transition">
+    <div class="orb" aria-hidden="true">
+      <div class="orb-anim">
+        <i></i><i></i><i></i><i></i><i></i>
+      </div>
+    </div>
     <div class="wrap">
       <p class="eyebrow reveal">FROM MODELS TO SYSTEMS</p>
       ${lede('BUT MODELS ARE ONLY PART OF THE SYSTEM.', 'THE NEXT QUESTION:<br>HOW DO THEY <em class="serif">ACT?</em>')}
@@ -428,4 +434,28 @@ menu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
   menu.classList.remove('open');
   button.setAttribute('aria-expanded', 'false');
   button.textContent = 'MENU';
+}));
+
+/* ── 3D tilt on project images & hero portrait ─────────────────────── */
+if (matchMedia('(hover: hover) and (pointer: fine)').matches && !matchMedia('(prefers-reduced-motion: reduce)').matches) {
+  const tiltEls = [...document.querySelectorAll('.project-image, .hero-visual')];
+  tiltEls.forEach(el => {
+    el.classList.add('tilt');
+    let raf = 0;
+    el.addEventListener('mousemove', e => {
+      cancelAnimationFrame(raf);
+      raf = requestAnimationFrame(() => {
+        const r = el.getBoundingClientRect();
+        const x = (e.clientX - r.left) / r.width - .5;
+        const y = (e.clientY - r.top) / r.height - .5;
+        el.style.transform = `perspective(950px) rotateY(${x * 6}deg) rotateX(${-y * 6}deg)`;
+      });
+    });
+    el.addEventListener('mouseleave', () => { cancelAnimationFrame(raf); el.style.transform = ''; });
+  });
+}
+
+/* ── 3D hero scene ─────────────────────────────────────────────────── */
+requestAnimationFrame(() => requestAnimationFrame(() => {
+  import('./scene3d.js').then(m => m.initHeroScene());
 }));
